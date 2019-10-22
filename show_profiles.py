@@ -6,6 +6,7 @@ from readout_fn import *
 from ipdb import set_trace as stop
 
 #program to show the observed and best fitted profiles interactively. 
+#Inputs: observed and synthetic profiles, inverted maps, and wavelength range file
 ####################################################################
 
 def xyplot(ix,iy):
