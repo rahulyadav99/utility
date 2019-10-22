@@ -24,10 +24,8 @@ def xyplot(ix,iy):
 
 	pl.tight_layout()		
 	pl.show()
-
-
-
-
+############################
+	
 def onclick(event):
 	#pl.close(1)
 	global ix, iy
@@ -39,8 +37,7 @@ def onclick(event):
 		#fig.canvas.mpl_disconnect(cid)
 		#pl.close()
 	#return coords
-	
-
+##########################	
 
 if __name__ == "__main__":
 	global obspro,synpro,synpro1,synpro2
