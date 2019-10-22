@@ -5,7 +5,7 @@ from tqdm import tqdm
 import h5py
 
 def binavg1D(xdata,ydata,nbin):
-	#input: 1D arrray, number of bins (nbin)
+	#input: 1D arrray (x & y), number of bins (nbin)
 	#output: 1D array of nbinned data
 	
 	nx = len(ydata)
