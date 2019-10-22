@@ -5,10 +5,11 @@ import time
 from readout_fn import *
 from ipdb import set_trace as stop
 
-#program to show the observed and best fitted profiles interactively. 
-#Inputs: observed and synthetic profiles, inverted maps, and wavelength range file
-####################################################################
-
+'''
+program to show the observed and best fitted profiles interactively.
+Click on the inverted maps to see the observed and synthetic profiles.
+Inputs: observed and synthetic profiles, inverted maps, and wavelength range file
+'''
 def xyplot(ix,iy):
 	pl.close(2)
 	fig, ax = pl.subplots(figsize=(10,6), nrows=2, ncols=2,num = 'OBSERVED & SYNTHETIC PROFILES')
