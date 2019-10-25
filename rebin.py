@@ -1,12 +1,10 @@
 import numpy as np
-import matplotlib.pyplot as pl
-from scipy import signal
-from tqdm import tqdm
-import h5py
 
 def avg1D(xdata,ydata,nbin):
 	'''
-	input: 1D arrray (x & y), number of bins (nbin)
+	xdata: 1D arrray
+	ydata: 1D array
+	nbin: number of bins
 	output: 1D array of rebinned data
 	'''
 	nx = len(ydata)
@@ -26,8 +24,9 @@ def avg1D(xdata,ydata,nbin):
 
 def avg2D(data,nbin):
 	'''
-	input: 2D array, number of bins (nbin, same for x & y direction) 
-	output: binned 2D array
+	data: 2D arrray
+	nbin: number of bins
+	output: 2D array of rebinned data
 	'''
 	nx,ny = data.shape
 	npx = int(nx/nbin)
