@@ -7,7 +7,7 @@ def avg1D(xdata,ydata,nbin):
 		ydata: 1D array
 		nbin: number of bins
 	returns: 
-		xbin, ybin: 1D arrays (x & y) of rebinned data	
+		xbin, ybin: rebinned 1D arrays (x & y) 	
 	'''
 	nx = len(ydata)
 	binv = int((nx)/nbin)
@@ -30,7 +30,7 @@ def avg2D(data,nbin):
 		data: 2D arrray
 		nbin: number of bins
 	output: 
-		rebin: 2D array of rebinned data
+		rebin: rebinned 2D array
 	'''
 	nx,ny = data.shape
 	npx = int(nx/nbin)
