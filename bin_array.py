@@ -4,10 +4,11 @@ from scipy import signal
 from tqdm import tqdm
 import h5py
 
-def binavg1D(xdata,ydata,nbin):
-	#input: 1D arrray (x & y), number of bins (nbin)
-	#output: 1D array of nbinned data
-	
+def avg1D(xdata,ydata,nbin):
+	'''
+	input: 1D arrray (x & y), number of bins (nbin)
+	output: 1D array of rebinned data
+	'''
 	nx = len(ydata)
 	binv = int((nx)/nbin)
 
@@ -23,10 +24,11 @@ def binavg1D(xdata,ydata,nbin):
 		return xbin, ybin
 
 
-def binavg2D(data,nbin):
-	#input: 2D array, number of bins (nbin, same for x & y direction) 
-	#output: binned 2D array
-
+def avg2D(data,nbin):
+	'''
+	input: 2D array, number of bins (nbin, same for x & y direction) 
+	output: binned 2D array
+	'''
 	nx,ny = data.shape
 	npx = int(nx/nbin)
 	npy = int(ny/nbin)
