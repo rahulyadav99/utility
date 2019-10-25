@@ -3,12 +3,10 @@ import matplotlib.pyplot as pl
 import h5py
 import time
 from readout_fn import *
-from ipdb import set_trace as stop
-
 '''
 program to show the observed and best fitted profiles interactively.
-Click on the inverted maps to see the observed and synthetic profiles.
-Inputs: observed and synthetic profiles, inverted maps, and wavelength range file
+Click on the inverted maps to see the observed and the synthetic profiles.
+Inputs: observed and synthetic profiles, inverted maps, and wavelength file
 '''
 def xyplot(ix,iy):
 	pl.close(2)
