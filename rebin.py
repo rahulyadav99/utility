@@ -29,7 +29,7 @@ def avg2D(data,nbin):
 	Inputs:
 		data: 2D arrray
 		nbin: number of bins
-	output: 
+	returns: 
 		rebin: rebinned 2D array
 	'''
 	nx,ny = data.shape
