@@ -17,7 +17,7 @@ def readout_1c_ch(obsf,nx,ny, invf):
 		synpro: synthetic profiles in 4D array [nx, ny, 4stks, wav]
 		chi2: chisquare map [nx, ny]
 	Example:
-		inv_ch, synpro,chi2 = readout_1c_ch[obsf,nx,ny, invf]
+		inv_ch, synpro,chi2 = readout_1c_ch(obsf,nx,ny, invf)
 	'''
 	fobs=h5py.File(obsf,'r')
 	tpix, nlam, stk = fobs['stokes'].shape
@@ -68,7 +68,7 @@ def readout_1c(obsf,nx,ny, invf):
 		synpro: synthetic profiles in 4D array [nx, ny, 4stks, wav]
 		chi2: chisquare map [nx, ny]
 	Example:
-		inv_ch, inv_ph, synpro, logtau, phff,chi2 = readout_1c_ch[obsf,nx,ny, invf]
+		inv_ch, inv_ph, synpro, logtau, phff,chi2 = readout_1c_ch(obsf,nx,ny, invf)
 	'''
 	fobs=h5py.File(obsf,'r')
 	tpix, nlam, stk = fobs['stokes'].shape
@@ -129,7 +129,7 @@ def readout_2c(obsf,nx,ny, invf):
 		synpro: synthetic profiles in 4D array [nx, ny, 4stks, wav]
 		chi2: chisquare map [nx, ny]
 	Example:
-		inv_ch, inv_ph,synpro, logtau, phff,chi2 = readout_1c_ch[obsf,nx,ny, invf]
+		inv_ch, inv_ph,synpro, logtau, phff,chi2 = readout_1c_ch(obsf,nx,ny, invf)
 	'''
 	fobs=h5py.File(obsf,'r')
 	tpix, nlam, stk = fobs['stokes'].shape
