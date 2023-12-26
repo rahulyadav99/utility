@@ -10,7 +10,7 @@ import sparsetools as sp
 import glob
 import imtools as mt
 '''
-program to see observed and fitted Stokes profiles 
+program to see observed, fitted Stokes profiles 
 and inverted maps
 '''
 def xyplot(ix,iy):
@@ -109,52 +109,29 @@ if __name__ == "__main__":
 	w1 and w2 = wavelength array
 	'''
 	global ss,mm, o, nt
-	#sf = np.sort(glob.glob('outputs/t6_synthe*'))
-	#mf = np.sort(glob.glob('outputs/t6_atmos*'))
-
-	#sf = np.sort(glob.glob('outputs/synthe*150_150_230_230*.nc'))
-	#mf = np.sort(glob.glob('outputs/atmos*150_150_230_230*.nc'))
+	
 	indx = '185_135_15_15sr_025_049'
-
+	
+	#--read input files (observed and synthetic profiles, and model atmosphere)
 	sf = np.sort(glob.glob('/proj/solarphysics/users/x_rahya/outputs/synthe*_'+indx+'_cyc2*.nc'))
 	mf = np.sort(glob.glob('/proj/solarphysics/users/x_rahya/outputs/atmos*_'+indx+'_cyc2*.nc'))
 	#of = '/home/x_rahya/stic/data/observed_40_114_370_444.nc'
 	of = '/proj/solarphysics/users/x_rahya/data/observed_'+indx+'.nc'
+	##--time frame index---	
+	nt = 0
 	
-	nt = 20
-	
-	if(False):
-		ind = 'st_0'
-		#sf = np.sort(glob.glob('invtest/syn*'+ind+'*.nc'))
-		#mf = np.sort(glob.glob('invtest/mod*'+ind+'*.nc'))
-
-		sf = ['invtest/syn0_2_2st_0.nc','invtest/syn1_2_2st_0.nc']#,'invtest/syn_test.nc']
-		mf = ['invtest/mod0_2_2st_0.nc','invtest/mod1_2_2st_0.nc']#,'invtest/atm_test.nc']
-		of = 'invtest/obs_2_2'+ind+'.nc' 
-	
-	#sf = sf[0:-1]
-	#mf = mf[0:-1]
+	#--list synthetic profiles per cycle
 	ss=[]
 	for i in range(len(sf)):
 		ss.append(sp.profile(sf[i]).splitRegions())
 
+	#--list model atmosphere per cycle
 	mm=[]
 	for i in range(len(mf)):
 		mm.append(sp.model(mf[i]))
-	#s3 = sp.profile('invt4/synthetic_200_140_5_5_cyc1.nc').splitRegions()
-	##s4 = sp.profile('invt5/synthetic_200_140_5_5_cyc2.nc').splitRegions()
-	#5 = sp.profile('invt6/synthetic_200_140_5_5_cyc3.nc').splitRegions()
-
-
+		
 	o = sp.profile(of).splitRegions()
-	#o = sp.profile('example/observed_280_210_30_30.nc').splitRegions()
 
-
-	#m1 = sp.model('invt4/atmosout_200_140_5_5_cyc1.nc')
-	#m2 = sp.model('invt5/atmosout_200_140_5_5_cyc2.nc')
-	#m3 = sp.model('invt6/atmosout_200_140_5_5_cyc3.nc')
-	#ss = [s3,s4,s5]
-	#mm = [m1,m2,m3]
 	print(sf)
 	print(mf)
 	print(of)
@@ -162,14 +139,10 @@ if __name__ == "__main__":
 	#call chisquare routine...
 	chisq = chimap(sf[-1],of,nt=nt)
 
-
+	#--read model atmosphere at different optical depth
 	temp = mm[-1].temp
 	tau = mm[-1].ltau[0,0,0,:]
-
-	#pht = np.mean(temp[0,:,:,54],axis=2)
-	#mch = np.mean(temp[0,:,:,32],axis=2)
-	#uch = np.mean(temp[0,:,:,25],axis=2)
-
+	
 	pht = temp[nt,:,:,45]
 	mch = temp[nt,:,:,32]
 	uch = temp[nt,:,:,25]
@@ -205,7 +178,6 @@ if __name__ == "__main__":
 	#var = [m.temp, m.vlos, m.vturb, m.Bln, m.Bho, m.azi]
 	#tau = m.ltau[0,0,0]
 	ma = [8, 5, 2, 2]
-
 	mi = [3.,-5,-2, -2]
 	cm = ['hot','bwr', 'terrain', 'terrain']
 	fig, ax = pl.subplots(figsize=(7.3,7), nrows=4,ncols=3,sharex=True, sharey=True)
