@@ -54,14 +54,8 @@ def xyplot(ix,iy):
 		var = [m.temp, m.vlos, m.vturb, m.Bln, m.Bho, m.azi]
 		tau = m.ltau[0,0,0]
 		ma = [10, 5, 5, 2, 3, 180]
-
-
-
-
 		mi = [3.,-5, 0, -2, 0, 0]
-
 		
-
 		npar = len(var)
 		for iax in range(npar):
 			ax[9+iax].plot(tau, var[iax][0,nx,ny,:]*scl[iax],label='cyc_'+str(i+1))
