@@ -10,9 +10,9 @@ import sparsetools as sp
 import glob
 import imtools as mt
 '''
-program to see observed, fitted Stokes profiles 
-and inverted maps
-'''
+program to see observed and fitted Stokes profiles, 
+and inverted maps (STiC inversion)
+''' 
 def xyplot(ix,iy):
 	ww = []
 	stk = []
